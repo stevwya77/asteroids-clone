@@ -22,6 +22,7 @@ def main():
         color = (0,0,0)
         screen.fill(color)
         player.draw(screen)
+        player.update(dt)
         pygame.display.flip()
         # pause loop until 1/60 sec
         tick = clock.tick(60)
