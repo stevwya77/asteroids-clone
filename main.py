@@ -3,6 +3,7 @@ from player import *
 from asteroid import *
 from asteroidfield import *
 import pygame
+import sys
 
 def main():
     pygame.init()
@@ -37,9 +38,16 @@ def main():
         # set to black to fill screen    
         color = (0,0,0)
         screen.fill(color)
+        
+        # draw shapes
         for item in drawable:
             item.draw(screen)
         updatable.update(dt)
+
+        # check for collisions & exit if true
+        for asteroid in asteroids:
+            if asteroid.isCollision(player):
+                sys.exit("Game Over!")
         pygame.display.flip()
         
         # pause loop until 1/60 sec
