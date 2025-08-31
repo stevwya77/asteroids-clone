@@ -50,8 +50,12 @@ def main():
 
         # check for collisions & exit if true
         for asteroid in asteroids:
-            if asteroid.isCollision(player):
+            if asteroid.is_collision(player):
                 sys.exit("Game Over!")
+            for shot in shots:
+                if shot.is_collision(asteroid):
+                    asteroid.kill()
+                    shot.kill()
         pygame.display.flip()
         
         # pause loop until 1/60 sec
